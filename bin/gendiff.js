@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
 // импортируем объект program из библиотеки commander
-import { Command } from 'commander';
+import { program } from 'commander';
 import gendiff from '../src/index.js';
-const program = new Command();
 
 program
   // имя программы
@@ -20,8 +19,6 @@ program
   .option('-h, --help', 'output usage information')
   // действие, которое будет выполнено при запуске программы с файлами
   .action((filepath1, filepath2, option) => {
-    console.log(`путь к файлу 1: ${filepath1}`);
-    console.log(`путь к файлу 2: ${filepath2}`);
     // позволяет получить доступ к параметрам, указанным пользователем при запуске
     //const option = program.opts();
     // чтобы получить значение опции -f, мы обращаемся к свойству format этого объекта, то есть option.format

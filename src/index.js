@@ -1,8 +1,8 @@
 // склеивает путь через функцию resole
 import path from 'path';
 // readFileSync - используется для чтения файла. Принимает путь к файлу(относительный или абсолютный)
-import { readFileSync } from 'node:fs';
 import _ from 'lodash';
+import parseFile from './parse.js';
 
 // абсолютный путь: /home/oxana/frontend-project-46/__fixtures__/file1.json
 // относительный путь: ../__fixtures__/file1.json
@@ -14,13 +14,10 @@ const gendiff = (filepath1, filepath2) => {
   const getAbsPath1 = path.resolve(rootPath, '__fixtures__', filepath1.split('/').pop());
   const getAbsPath2 = path.resolve(rootPath, '__fixtures__', filepath2.split('/').pop());
 
-  const readFile1 = readFileSync(getAbsPath1, 'utf-8');
-  const readFile2 = readFileSync(getAbsPath2, 'utf-8');
+  const parseFile1 = parseFile(getAbsPath1);
+  const parseFile2 = parseFile(getAbsPath2);
 
-  const parseFile1 = JSON.parse(readFile1);
-  const parseFile2 = JSON.parse(readFile2);
-
-  return JSON.stringify({ file1: parseFile1, file2: parseFile2 });
+  return { parseFile1, parseFile2 };
 };
 
 export default gendiff;

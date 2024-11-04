@@ -5,17 +5,12 @@ import { program } from 'commander';
 import gendiff from '../src/index.js';
 
 program
-  // имя программы
   .name('gendiff')
-  // определяет два аргумента(пути к файлам), которые программа ожидает при запуске, для дальнейшего сравнения
   .arguments('<filepath1> <filepath2>')
-  // описание программы
   .description('Compares two configuration files and shows a difference.')
-  // версия программы
   .version('1.0.0', '-V, --version', 'output the version number')
   // формат ввода, в котором ожидается результат
   .option('-f, --format <type>', 'output format')
-  // справка, как использовать программу
   .option('-h, --help', 'output usage information')
   // действие, которое будет выполнено при запуске программы с файлами
   .action((filepath1, filepath2, option) => {
@@ -34,6 +29,3 @@ program.parse(process.argv);
 if (!program.args.length) {
     program.help();
 }
-
-
-//Точкой входа в приложение должен быть тот файл, который экспортирует нашу интерфейсную функцию. В эталоне - это индекс.жс

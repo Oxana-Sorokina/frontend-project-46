@@ -1,9 +1,7 @@
 const parseFile = (file, format) => {
-    if(format === 'json') {
-        return JSON.parse(file);
-    } else {
-        console.log("Другой формат");
-    }
+  if (format === 'json') {
+    return JSON.parse(file);
+  }
 };
 
 export default parseFile;

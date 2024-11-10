@@ -1,6 +1,9 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Oxana-Sorokina/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Oxana-Sorokina/frontend-project-46/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/80458634db7d39858805/maintainability)](https://codeclimate.com/github/Oxana-Sorokina/frontend-project-46/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/80458634db7d39858805/test_coverage)](https://codeclimate.com/github/Oxana-Sorokina/frontend-project-46/test_coverage)
+[![hexlet-check](https://github.com/Oxana-Sorokina/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Oxana-Sorokina/frontend-project-46/actions/workflows/hexlet-check.yml)
+
 
 ## **Setup** 
 make install
@@ -12,6 +15,7 @@ Support for different input formats: yaml, json.
 Generate a report in the form: plain text, stylish и json.
 
 ## **Start** 
+```
 gendiff -h
 
 Usage: gendiff [options] <filepath1> <filepath2>
@@ -22,6 +26,7 @@ Options:
     -V, --version        output the version number
     -f, --format [type]  output format
     -h, --help           output usage information
+```
 
 ## **Example**
 gendiff: https://asciinema.org/a/z9x0N6QNcVjGhfI6qZuG6Jdw4

@@ -2,7 +2,7 @@
 
 // импортируем объект program из библиотеки commander
 import { program } from 'commander';
-import gendiff from '../src/index.js';
+import genDiff from '../src/index.js';
 
 program
   .name('gendiff')
@@ -15,11 +15,10 @@ program
   // действие, которое будет выполнено при запуске программы с файлами
   .action((filepath1, filepath2, option) => {
     // позволяет получить доступ к параметрам, указанным пользователем при запуске
-    //const option = program.opts();
-    // чтобы получить значение опции -f, мы обращаемся к свойству format этого объекта, то есть option.format
-    console.log(gendiff(filepath1, filepath2, option.format));
+    // const option = program.opts();
+    // чтобы получить значение опции -f, мы обращаемся к свойству format этого объекта-option.format
+    console.log(genDiff(filepath1, filepath2, option.format));
   });
-
 
 // проверка и сравнение переданных аргументов с опциями и командами из кода.
 // далее сохраняются в объекте program
@@ -27,5 +26,5 @@ program.parse(process.argv);
 
 // если аргументы не были переданы, то вызывается хелп с информацией о доступных опциях
 if (!program.args.length) {
-    program.help();
+  program.help();
 }

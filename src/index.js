@@ -1,8 +1,5 @@
-import parseFile from './parse.js';
+import parseFile from './parsers.js';
 import { transformaterPath, getFormatFile, dataDiff } from './utils.js';
-
-// абсолютный путь: /home/oxana/frontend-project-46/__fixtures__/file1.json
-// относительный путь: ../__fixtures__/file1.json
 
 const genDiff = (filepath1, filepath2) => {
   const readingFile1 = transformaterPath(filepath1);

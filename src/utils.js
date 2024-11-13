@@ -28,9 +28,9 @@ const dataDiff = (data1, data2) => {
         // новое значение с +
       }
       return `  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}`;
-
-      // если ключ есть в 1 объекте
-    } if (Object.hasOwn(data1, key)) {
+    }
+    // если ключ есть в 1 объекте
+    if (Object.hasOwn(data1, key)) {
       // возвращаем с - ключ:значение
       return `  - ${key}: ${data1[key]}`;
       // иначе(если ключ только во 2 объекте)

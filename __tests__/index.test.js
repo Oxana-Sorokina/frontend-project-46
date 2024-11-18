@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 const getFilePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => readFileSync(getFilePath(filename), 'utf-8');
 
-const expectedFile1 = readFile('expected_file_json.txt').trim();
+const expectedFile1 = readFile('expected_file_stylish.txt').trim();
 
 const file1 = getFilePath('file1.json');
 const file2 = getFilePath('file2.json');

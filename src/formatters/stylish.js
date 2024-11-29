@@ -62,7 +62,7 @@ const iter = (diff, depth = 1) => diff.map((node) => {
   }
 });
 
-// форматируем, вызывая итер 
+// форматируем, вызывая итер
 const formatStylish = (tree) => {
   const result = iter(tree, 1);
   return `{\n${result.join('\n')}\n}`;

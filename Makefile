@@ -11,10 +11,10 @@ gendiff:
 	node bin/gendiff.js
 
 lint:
-	npx eslint .
+	npx eslint src bin
 
 fix:
-	npx eslint . --fix
+	npx eslint src bin --fix
     
 publish:
 	npm publish --dry-run

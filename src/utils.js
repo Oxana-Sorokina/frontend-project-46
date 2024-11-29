@@ -5,7 +5,7 @@ import path from 'path';
 import { readFileSync } from 'node:fs';
 import _ from 'lodash';
 
-const transformaterPath = (filepath) => {
+const readFixtureFile = (filepath) => {
   const rootPath = process.cwd(filepath);
   const getAbsPath = path.resolve(rootPath, '__fixtures__', filepath.split('/').pop());
   return readFileSync(getAbsPath, 'utf-8');
@@ -14,32 +14,52 @@ const transformaterPath = (filepath) => {
 const getFormatFile = (filepath) => path.extname(filepath).slice(1);
 
 const dataDiff = (data1, data2) => {
-  // получим массив уникальных ключей, без повтора, в алф. порядке
+  // объединяем ключи без повтора, в алф. порядке
   const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
 
   const result = keys.map((key) => {
-    // если ключ есть в обоих объектах
-    if (Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
-      // если значения ключа одинаковые в обоих объектах
-      if (data1[key] === data2[key]) {
-        // возвращаем без знака ключ:значение
-        return `    ${key}: ${data1[key]}`;
-        // иначе возвращаем старое значение с -
-        // новое значение с +
-      }
-      return `  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}`;
+    // если ключа нет в data1, он добавлен в data2
+    if (!Object.hasOwn(data1, key)) {
+      return {
+        key,
+        type: 'added',
+        value: data2[key],
+      };
     }
-    // если ключ есть в 1 объекте
-    if (Object.hasOwn(data1, key)) {
-      // возвращаем с - ключ:значение
-      return `  - ${key}: ${data1[key]}`;
-      // иначе(если ключ только во 2 объекте)
+    // если ключа нет в data2, он удален из data1
+    if (!Object.hasOwn(data2, key)) {
+      return {
+        key,
+        type: 'removed',
+        value: data1[key],
+      };
     }
-    // возвращаем с + ключ:значение
-    return `  + ${key}: ${data2[key]}`;
+    // если оба значения объекты и ключи есть в обоих файлах, вложенные
+    // запускается рекурсия для обработки вложенности
+    if ((_.isObject(data1[key])) && (_.isObject(data2[key]))) {
+      return {
+        key,
+        type: 'nested',
+        children: dataDiff(data1[key], data2[key]),
+      };
+    }
+    // если ключ есть в обоих файлах, но значения разные, измененные
+    if (data1[key] !== data2[key]) {
+      return {
+        key,
+        type: 'changed',
+        value1: data1[key],
+        value2: data2[key],
+      };
+    }
+    // если ключ есть в обоих файлах, их значения одинаковы, неизмененные
+    return {
+      key,
+      type: 'unchanged',
+      value: data1[key],
+    };
   });
-
-  return result.join('\n');
+  return result;
 };
 
-export { transformaterPath, getFormatFile, dataDiff };
+export { readFixtureFile, getFormatFile, dataDiff };

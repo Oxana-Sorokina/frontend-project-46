@@ -31,3 +31,4 @@ Options:
 ## **Example**
 gendiff json file: https://asciinema.org/a/z9x0N6QNcVjGhfI6qZuG6Jdw4
 gendiff yaml file: https://asciinema.org/a/stVtt3VRn8V7qISVrNtiC2LR7?t=16
+gendiff attached files: https://asciinema.org/a/p0Y8hOJMjnLoL9MhfZMKjjsjg?t=37

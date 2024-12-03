@@ -15,5 +15,3 @@ const genDiff = (filepath1, filepath2, styleName = 'stylish') => {
 };
 
 export default genDiff;
-
-// JSON.stringify();

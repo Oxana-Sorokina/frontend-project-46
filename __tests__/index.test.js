@@ -41,7 +41,7 @@ test('unknown format', () => {
 test('unknown style', () => {
   const unknownTree = [{ key: 'key', type: 'unknown', value: 'value' }];
   const unknownStyle = 'base';
-  expect(() => selectStyle(unknownTree, unknownStyle)).toThrow(`Unknown style: ${unknownStyle}.`);
+  expect(() => selectStyle(unknownTree, unknownStyle)).toThrow(`Unknown style.`);
 });
 
 test('unknown type in plain format', () => {

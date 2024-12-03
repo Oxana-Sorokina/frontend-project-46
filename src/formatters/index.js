@@ -8,7 +8,7 @@ const selectStyle = (tree, styleName = 'stylish') => {
   if (styleName === 'plain') {
     return getPlain(tree);
   }
-  throw new Error(`Unknown style: ${styleName}.`);
+  throw new Error(`Unknown style.`);
 };
 
 export default selectStyle;

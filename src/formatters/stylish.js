@@ -58,7 +58,7 @@ const iter = (diff, depth = 1) => diff.map((node) => {
       return `${getSpaces(depth)}${node.key}: {\n${lines.join('\n')}\n${getSpaces(depth)}}`;
     }
     default:
-      throw new Error(`Unknown type: ${node.type}.`);
+      throw new Error('Unknown type.');
   }
 });
 

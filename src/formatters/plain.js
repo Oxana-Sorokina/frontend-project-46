@@ -32,7 +32,7 @@ const iter = (diff, path) => diff
       case 'nested':
         return iter(node.children, propertyPath).join('\n');
       default:
-        throw new Error(`Unknown type: ${node.type}`);
+        throw new Error('Unknown type.');
     }
   });
 

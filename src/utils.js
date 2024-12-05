@@ -6,9 +6,12 @@ import { readFileSync } from 'node:fs';
 import _ from 'lodash';
 
 const readFixtureFile = (filepath) => {
-  const rootPath = process.cwd(filepath);
-  const getAbsPath = path.resolve(rootPath, '__fixtures__', filepath.split('/').pop());
-  return readFileSync(getAbsPath, 'utf-8');
+  // корневая директория
+  const rootPath = process.cwd();
+  // абсолютный путь до файла в директории
+  const absPath = path.resolve(rootPath, '__fixtures__', path.basename(filepath));
+  // чтение файла
+  return readFileSync(absPath, 'utf-8');
 };
 
 const getFormatFile = (filepath) => path.extname(filepath).slice(1);

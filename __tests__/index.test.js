@@ -16,13 +16,14 @@ const readFile = (filename) => readFileSync(getFilePath(filename), 'utf-8');
 
 const expectedFile1 = readFile('expected_file_stylish.txt').trim();
 const expectedFile2 = readFile('expected_file_plain.txt').trim();
+const expectedFile3 = readFile('expected_file_json.txt').trim();
 
 const file1 = getFilePath('file1.json');
 const file2 = getFilePath('file2.json');
 const file3 = getFilePath('file1.yaml');
 const file4 = getFilePath('file2.yaml');
 
-test('comparing files', () => {
+test('stylish format', () => {
   expect(genDiff(file1, file2, 'stylish')).toEqual(expectedFile1);
   expect(genDiff(file3, file4, 'stylish')).toEqual(expectedFile1);
 });
@@ -30,6 +31,11 @@ test('comparing files', () => {
 test('plain format', () => {
   expect(genDiff(file1, file2, 'plain')).toEqual(expectedFile2);
   expect(genDiff(file3, file4, 'plain')).toEqual(expectedFile2);
+});
+
+test('json format', () => {
+  expect(genDiff(file1, file2, 'json')).toEqual(expectedFile3);
+  expect(genDiff(file3, file4, 'json')).toEqual(expectedFile3);
 });
 
 test('unknown format', () => {

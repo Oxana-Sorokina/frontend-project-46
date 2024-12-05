@@ -35,3 +35,5 @@ gendiff yaml file: https://asciinema.org/a/stVtt3VRn8V7qISVrNtiC2LR7?t=16
 gendiff stylish: https://asciinema.org/a/p0Y8hOJMjnLoL9MhfZMKjjsjg?t=37
 
 gendiff plain: https://asciinema.org/a/ZWL7CCH08JSfue9BcbAAeLSeh?t=50
+
+gendiff json: https://asciinema.org/a/VOKbqNKBhQWJFZOdIjwYMlylm?t=25

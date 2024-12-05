@@ -7,7 +7,6 @@ import selectStyle from '../src/formatters/index.js';
 import getStylish from '../src/formatters/stylish.js';
 import getPlain from '../src/formatters/plain.js';
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -47,17 +46,17 @@ test('unknown format', () => {
 test('unknown style', () => {
   const unknownTree = [{ key: 'key', type: 'unknown', value: 'value' }];
   const unknownStyle = 'base';
-  expect(() => selectStyle(unknownTree, unknownStyle)).toThrow(`Unknown style.`);
+  expect(() => selectStyle(unknownTree, unknownStyle)).toThrow('Unknown style.');
 });
 
 test('unknown type in plain format', () => {
   const diff = [{ key: 'key', type: 'unknown', value: 'value' }];
-  expect(() => getPlain(diff)).toThrow(`Unknown type.`);
+  expect(() => getPlain(diff)).toThrow('Unknown type.');
 });
 
 test('unknown type in stylish format', () => {
   const diff = [{ key: 'key', type: 'unknown', value: 'value' }];
-  expect(() => getStylish(diff)).toThrow(`Unknown type.`);
+  expect(() => getStylish(diff)).toThrow('Unknown type.');
 });
 
 test('empty tree', () => {

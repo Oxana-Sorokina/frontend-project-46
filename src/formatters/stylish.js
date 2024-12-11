@@ -41,19 +41,25 @@ const convertString = (data, depth) => {
   return String(data);
 };
 
+const typeAdded = 'added';
+const typeRemoved = 'removed';
+const typeNested = 'nested';
+const typeChanged = 'changed';
+const typeUnchanged = 'unchanged';
+
 // преобразуем дерево различий, дифф, в отформатированную строку
 const iter = (diff, depth = 1) => diff.map((node) => {
   switch (node.type) {
-    case 'removed':
+    case typeRemoved:
       return `${getSpacesWithShift(depth)}- ${node.key}: ${convertString(node.value, depth)}`;
-    case 'added':
+    case typeAdded:
       return `${getSpacesWithShift(depth)}+ ${node.key}: ${convertString(node.value, depth)}`;
-    case 'changed': {
+    case typeChanged: {
       return `${getSpacesWithShift(depth)}- ${node.key}: ${convertString(node.value1, depth)}\n${getSpacesWithShift(depth)}+ ${node.key}: ${convertString(node.value2, depth)}`;
     }
-    case 'unchanged':
+    case typeUnchanged:
       return `${getSpaces(depth)}${node.key}: ${convertString(node.value, depth)}`;
-    case 'nested': {
+    case typeNested: {
       const lines = iter(node.children, depth + 1);
       return `${getSpaces(depth)}${node.key}: {\n${lines.join('\n')}\n${getSpaces(depth)}}`;
     }

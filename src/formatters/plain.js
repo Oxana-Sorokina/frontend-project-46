@@ -17,19 +17,25 @@ const getString = (value) => {
   return String(value);
 };
 
+const typeAdded = 'added';
+const typeRemoved = 'removed';
+const typeNested = 'nested';
+const typeChanged = 'changed';
+const typeUnchanged = 'unchanged';
+
 const iter = (diff, path) => diff
-  .filter((node) => node.type !== 'unchanged')
+  .filter((node) => node.type !== typeUnchanged)
   .map((node) => {
     // если путь пуст, то node.key. Если уже содержит путь, . добавляется перед node.key
     const propertyPath = path ? `${path}.${node.key}` : node.key;
     switch (node.type) {
-      case 'removed':
+      case typeRemoved:
         return `Property '${propertyPath}' was removed`;
-      case 'added':
+      case typeAdded:
         return `Property '${propertyPath}' was added with value: ${getString(node.value)}`;
-      case 'changed':
+      case typeChanged:
         return `Property '${propertyPath}' was updated. From ${getString(node.value1)} to ${getString(node.value2)}`;
-      case 'nested':
+      case typeNested:
         return iter(node.children, propertyPath).join('\n');
       default:
         throw new Error('Unknown type.');

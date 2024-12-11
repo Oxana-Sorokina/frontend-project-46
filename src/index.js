@@ -1,5 +1,6 @@
 import parseFile from './parsers.js';
-import { readFixtureFile, getFormatFile, dataDiff } from './utils.js';
+import { readFixtureFile, getFormatFile } from './utils.js';
+import dataDiff from './diff.js';
 import selectStyle from './formatters/index.js';
 
 const genDiff = (filepath1, filepath2, styleName = 'stylish') => {
